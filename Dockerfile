@@ -4,7 +4,11 @@ RUN apt-get update
 
 RUN apt-get install git
 
-RUN git clone --recursive https://github.com/kikolouro/DobrevStats /app
+ARG ENV
+RUN echo $ENV
+RUN if [ "x$ENV" = "xdev" ] ; then git clone --recursive --branch development https://github.com/kikolouro/DobrevStats /app ; else git clone --recursive https://github.com/kikolouro/DobrevStats /app ; fi
+
+#RUN git clone --recursive https://github.com/kikolouro/DobrevStats /app
 
 COPY ./config_GENERIC.yml /app/bots/config.yml
 WORKDIR /app/bots
