@@ -6,8 +6,8 @@ RUN apt-get install git
 
 RUN git clone --recursive https://github.com/kikolouro/DobrevStats /app
 
-COPY ./config.yml /app/listener/config.yml
-WORKDIR /app/listener
+COPY ./config_GENERIC.yml /app/bots/config.yml
+WORKDIR /app/bots
 
 RUN pip3 install -r requirements.txt
 

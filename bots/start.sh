@@ -32,5 +32,5 @@ else
 	update
 fi
 
-cd /app/listener
+cd /app/bots
 python3 -u main.py
