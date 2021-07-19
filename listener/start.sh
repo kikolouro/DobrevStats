@@ -32,4 +32,5 @@ else
 	update
 fi
 
+cd /app/listener
 python3 -u main.py
