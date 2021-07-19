@@ -10,4 +10,4 @@ WORKDIR /app/listener
 
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["./start.sh"]
