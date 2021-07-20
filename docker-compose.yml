@@ -10,13 +10,13 @@ services:
             ENV: ${ENV}
         volumes:
             - ./volume:/ext
-    response:
-        image: dobrevstatsresponse:${version}
-        build: 
-            context: './bots/response/.'
-        container_name: dobrevstatsresponse
-        restart: always
-        environment:
-            ENV: ${ENV}
-        volumes:
-            - ./volume:/ext
+    #response:
+    #    image: dobrevstatsresponse:${version}
+    ##    build: 
+    #        context: './bots/response/.'
+    #    container_name: dobrevstatsresponse
+    #    restart: always
+    #    environment:
+    #        ENV: ${ENV}
+    #    volumes:
+    #        - /ext

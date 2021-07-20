@@ -3,7 +3,7 @@ from yaml.loader import SafeLoader
 import json
 import tweepy
 import datetime 
-with open('/ext/config.yml') as f:
+with open('../config.yml') as f:
     data = yaml.load(f, Loader=SafeLoader)
 
 listener = data[0]
@@ -27,7 +27,7 @@ class MyStreamListener(tweepy.StreamListener):
             my_date = datetime.date.today() 
             _, week_num, _ = my_date.isocalendar()
             file = f"Semana{week_num}.txt"
-            with open(f"/ext/share/file", "a") as File:
+            with open(f"../file", "a") as File:
                 File.write(f"{tweet.text}\n")
     def on_error(self, status_code):
         print(f"ERROR {status_code}")
