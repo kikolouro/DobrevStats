@@ -32,4 +32,4 @@ else
 fi
 
 cd /app/bots/listener
-python3 listener.py
+python3 -u listener.py

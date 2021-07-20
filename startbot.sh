@@ -12,7 +12,7 @@ function failure
 : > volume/status
 echo "start" >> volume/status
 if [ "x$ENV" = "xdev" ] ; then
-    docker run -it dobrevstatslistener:$version   || failure "Build the image first"
+    docker run dobrevstatslistener:$version   || failure "Build the image first"
     #docker run -v volume:/ext/status  --name dobrevstatsresponseV$version dobrevstatsresponse:$version || failure "Build the image first" ; 
 else 
     docker run -v status:/ext/status  --detach --name dobrevstatslistenerV$version dobrevstatslistener:$version || failure "Build the image first"

@@ -12,4 +12,4 @@ WORKDIR /app/bots/listener
 COPY ./bots/config.yml /app/bots/config.yml
 COPY status /ext/status
 RUN chmod +x ./start.sh
-RUN ./start.sh
+ENTRYPOINT ["./start.sh"]
