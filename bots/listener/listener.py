@@ -6,6 +6,10 @@ import datetime
 with open('../config.yml') as f:
     data = yaml.load(f, Loader=SafeLoader)
 
+with open('/app/status', 'r') as status:
+    if "build" in status.read():
+        print("build feita")
+        exit()
 listener = data[0]
 
 def startStream(stream):
