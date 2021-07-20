@@ -9,12 +9,11 @@ function failure
 	echo -e "${RED}[!] error: $*"
 	exit 1
 }
-: > volume/status
-echo "start" >> volume/status
+
 if [ "x$ENV" = "xdev" ] ; then
-    docker run dobrevstatslistener:$version   || failure "Build the image first"
-    #docker run -v volume:/ext/status  --name dobrevstatsresponseV$version dobrevstatsresponse:$version || failure "Build the image first" ; 
+    docker run -v volume:/ext -d --name dobrevstatsresponseV$version dobrevstatsresponse:$version || failure "Build the image first" ; 
+    docker run -v volume:/ext dobrevstatslistener:$version  --name dobrevstatslistenerV$version || failure "Build the image first"
 else 
-    docker run -v status:/ext/status  --detach --name dobrevstatslistenerV$version dobrevstatslistener:$version || failure "Build the image first"
-    docker run -v status:/ext/status  --detach --name dobrevstatsresponseV$version dobrevstatsresponse:$version || failure "Build the image first" ; 
+    docker run -v volume:/ext --detach --name dobrevstatsresponseV$version dobrevstatsresponse:$version || failure "Build the image first" ; 
+    docker run -v volume:/ext  --detach --name dobrevstatslistenerV$version dobrevstatslistener:$version || failure "Build the image first"
 fi 

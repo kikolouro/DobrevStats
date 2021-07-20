@@ -1,7 +1,3 @@
-with open('/app/status', 'r') as status:
-    if "build" in status.read():
-        print("[+] Built successfully")
-        exit()
 import os
 try:
     from logging import NullHandler
@@ -13,7 +9,7 @@ except ImportError:
     print("installing dependencies")
     os.system("pip3 install -r /app/bots/requirements.txt")
     raise
-with open('config.yml') as f:
+with open('/app/bots/config.yml') as f:
     data = yaml.load(f, Loader=SafeLoader)
 
 response = data[1]
@@ -49,10 +45,10 @@ with open(file, "r") as File:
         else:
             tweets.append(line)
 
-with open("tweets.txt", "a") as File:
+with open("/ext/tweets.txt", "a") as File:
     File.writelines(tweets)
 
-with open("tweets.txt", "r") as File:
+with open("/ext/tweets.txt", "r") as File:
     tweets = File.readlines()
     tweets = [x.strip() for x in tweets] 
 
