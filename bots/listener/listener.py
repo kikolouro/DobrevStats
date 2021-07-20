@@ -6,9 +6,6 @@ import datetime
 with open('../config.yml') as f:
     data = yaml.load(f, Loader=SafeLoader)
 
-for i in range(50000):
-    print(i)
-"""
 with open('/ext/status', 'r') as status:
     if "build" in status.read():
         print("[+] Built successfully")
@@ -49,4 +46,3 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 tweets_listener = MyStreamListener(api)
 stream = tweepy.Stream(api.auth, tweets_listener)
 startStream(stream)
-"""
