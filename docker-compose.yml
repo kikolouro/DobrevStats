@@ -1,0 +1,22 @@
+version: "3.8"
+services: 
+    listener:
+        image: dobrevstatslistener:${version}
+        build:
+            context: './bots/listener/.'
+        container_name: dobrevstatslistener
+        restart: always
+        environment:
+            ENV: ${ENV}
+        volumes:
+            - ./volume:/ext
+    response:
+        image: dobrevstatsresponse:${version}
+        build: 
+            context: './bots/response/.'
+        container_name: dobrevstatsresponse
+        restart: always
+        environment:
+            ENV: ${ENV}
+        volumes:
+            - ./volume:/ext
