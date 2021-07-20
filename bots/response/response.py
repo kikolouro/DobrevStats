@@ -1,3 +1,7 @@
+with open('/app/status', 'r') as status:
+    if "build" in status.read():
+        print("[+] Built successfully")
+        exit()
 import os
 try:
     from logging import NullHandler

@@ -3,6 +3,7 @@ ADD ./bots/response/crontab /etc/cron.d/response-cron
 RUN chmod 0644 /etc/cron.d/response-cron
 RUN touch /var/log/cron.log
 RUN apt-get update
+COPY status /app/status
 RUN apt-get -y install cron
 RUN pip3 install -r /ext/requirements.txt
 CMD cron && tail -f /var/log/cron.log
