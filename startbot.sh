@@ -7,5 +7,7 @@ if [ "x$env" = "xdev" ] ; then
 docker build -t dobrevstats:$version . --build-arg ENV=dev ; else
 docker build -t dobrevstats:$version . ; 
 fi
-
-docker run --restart always --detach --name dobrevstatsV$version dobrevstats:$version
+if [ "x$env" = "xdev" ] ; then
+    docker run --restart always --name dobrevstatsV$version dobrevstats:$version ; else 
+    docker run --restart always --detach --name dobrevstatsV$version dobrevstats:$version ; 
+fi 

@@ -1,9 +1,14 @@
-from logging import NullHandler
-import tweepy
-import datetime
-import yaml
-from yaml.loader import SafeLoader
-
+import os
+try:
+    from logging import NullHandler
+    import tweepy
+    import datetime
+    import yaml
+    from yaml.loader import SafeLoader
+except ImportError:
+    print("installing dependencies")
+    os.system("pip3 install -r /app/bots/requirements.txt")
+    raise
 with open('config.yml') as f:
     data = yaml.load(f, Loader=SafeLoader)
 
@@ -54,8 +59,8 @@ for line in tweets:
 
 
 try:
-    #print(f"o tweet mais repetido é {tweets[largest(repetidos)]}")
+    print(f"o tweet mais repetido é {tweets[largest(repetidos)]}")
     api.update_status(f"O Dobrev na semana {week_num} do ano {year} deu {rtcount} Retweets nos seus próprios tweets!!\nTweet que o grande Dobrev repete mais é: {tweets[largest(repetidos)]}")
 except (IndexError, TypeError) as e:
-    #print(f"O Dobrev na semana {week_num} do ano {year} deu {rtcount} Retweets nos seus próprios tweets!!\n Ainda sem dados quanto a tweets :(")
+    print(f"O Dobrev na semana {week_num} do ano {year} deu {rtcount} Retweets nos seus próprios tweets!!\n Ainda sem dados quanto a tweets :(")
     api.update_status(f"O Dobrev na semana {week_num} do ano {year} deu {rtcount} Retweets nos seus próprios tweets!!\nAinda sem dados de tweets, dêm-lhe algun tempo :(")
