@@ -1,14 +1,8 @@
-import os
-try:
-    from logging import NullHandler
-    import tweepy
-    import datetime
-    import yaml
-    from yaml.loader import SafeLoader
-except ImportError:
-    print("installing dependencies")
-    os.system("pip3 install -r /app/bots/requirements.txt")
-    raise
+import tweepy
+import datetime
+import yaml
+from yaml.loader import SafeLoader
+
 with open('/app/bots/config.yml') as f:
     data = yaml.load(f, Loader=SafeLoader)
 
