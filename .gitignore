@@ -1,6 +1,8 @@
 # config file
-startbot_dev.sh
+Semana*
+tweets.txt
 config.yml
+status
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
