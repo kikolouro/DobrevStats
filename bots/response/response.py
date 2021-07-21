@@ -33,7 +33,7 @@ if week_num == 1:
     week_num = 52
 file = f"Semana{week_num -1 }.txt"
 
-with open(file, "r") as File:
+with open(f"/ext/{file}", "r") as File:
     rtcount = 0
     tweets = []
     for line in File.readlines():

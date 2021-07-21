@@ -15,7 +15,8 @@ fi
 
 declare -- ANSWER=;
 until [[ $ANSWER =~ [yYnN] ]]; do
-	read -rp "${GREEN}[?]${NC} Start the bot? (y/n): " ANSWER
+	echo -e "${GREEN}[?]${NC} Start the bot? (y/n): "
+    read ANSWER
 done
 
 if ! [[ $ANSWER =~ [nN] ]]; then
