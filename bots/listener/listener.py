@@ -27,7 +27,7 @@ class MyStreamListener(tweepy.StreamListener):
             my_date = datetime.date.today() 
             _, week_num, _ = my_date.isocalendar()
             file = f"Semana{week_num}.txt"
-            with open(f"/ext/file", "a") as File:
+            with open(f"/ext/{file}", "a") as File:
                 File.write(f"{tweet.text}\n")
     def on_error(self, status_code):
         print(f"ERROR {status_code}")
