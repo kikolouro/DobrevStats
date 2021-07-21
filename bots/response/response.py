@@ -28,7 +28,10 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 my_date = datetime.date.today() 
 year, week_num, day = my_date.isocalendar()
-file = f"Semana{week_num}.txt"
+
+if week_num == 1:
+    week_num = 52
+file = f"Semana{week_num -1 }.txt"
 
 with open(file, "r") as File:
     rtcount = 0
