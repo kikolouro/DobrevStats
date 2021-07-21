@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Check for katana updates and then run Katana
 
 function failure
 {
@@ -32,5 +31,5 @@ else
 	update
 fi
 
-cd /app/bots
-python3 -u main.py
+cd /app/bots/listener
+python3 -u listener.py
