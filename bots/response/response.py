@@ -37,7 +37,7 @@ with open(f"/ext/{file}", "r") as File:
     rtcount = 0
     tweets = []
     for line in File.readlines():
-        if "RT @TheDobrev10:" in line:
+        if "RT " in line:
             rtcount += 1
         else:
             tweets.append(line)
@@ -52,6 +52,7 @@ with open("/ext/tweets.txt", "r") as File:
 
 repetidos = []
 for line in tweets:
+
     repetidos.append(tweets.count(line))
 
 
