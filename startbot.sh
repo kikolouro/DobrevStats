@@ -10,6 +10,27 @@ function failure
 	exit 1
 }
 
+function update
+{
+
+	echo "[+] installing DobrevStats upgrades"
+
+	# Grab new changes
+	git pull || failure "git pull failed"
+
+}
+
+echo "[+] checking for updates"
+
+git remote update >/dev/null
+if git status -uno | grep "branch is up to date with" >/dev/null; then
+	echo "[+] DobrevStats is up to date!"
+else
+	echo "[*] newer DobrevStats version avaiable (you should rebuild your docker)"
+	update
+fi
+
+
 if [ "x$ENV" = "xdev" ] ; then
     docker run -v $(pwd)/volume:/ext -d --name dobrevstatsresponseV$version dobrevstatsresponse:$version && docker run -v $(pwd)/volume:/ext --name dobrevstatslistenerV$version dobrevstatslistener:$version || failure "Build the image first" ;
 else 
