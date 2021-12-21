@@ -26,7 +26,7 @@ auth.set_access_token(response["acesstoken"], response["acesstokensecret"])
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 
-my_date = datetime.date.today() 
+my_date = datetime.date.today()
 year, week_num, day = my_date.isocalendar()
 
 if week_num == 1:
@@ -50,12 +50,7 @@ with open("/ext/tweets.txt", "r") as File:
     tweets = [x.strip() for x in tweets] 
 
 
-repetidos = []
-for line in tweets:
-
-    repetidos.append(tweets.count(line))
-
-
+repetidos = [tweets.count(line) for line in tweets]
 try:
     print(f"o tweet mais repetido é {tweets[largest(repetidos)]}")
     api.update_status(f"O Dobrev na semana {week_num} do ano {year} deu {rtcount} Retweets nos seus próprios tweets!!\nTweet que o grande Dobrev repete mais é: {tweets[largest(repetidos)]}")
